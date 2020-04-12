@@ -3,14 +3,14 @@ var app = express();
 var bodyParser = require('body-parser');
 var operations = require("./operations");
 var logger = require('morgan');
-var exphbs  = require('express-handlebars');
+var exphbs = require('express-handlebars');
 
 
 var contacts = {}
 
 app.use('/public', express.static('public'));
 app.use(logger('dev'))
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -62,7 +62,7 @@ app.get("/operation/:op", function(req, res) {
     }
 
     res.render('operation', {
-        oper: op,
+        op: op,
         error: error,
         inp: number,
         result: error ? null : operations[op](number),
@@ -71,15 +71,15 @@ app.get("/operation/:op", function(req, res) {
 })
 
 app.get("/contacts", function(req, res) {
-	res.json(contacts);
+    res.json(contacts);
 });
 
 app.post("/newcontact", function(req, res) {
-	if(!req.body) { return res.send("No data recieved"); }
-	for(var contact in req.body) {
-		contacts[contact] = req.body[contact];
-	}
-	res.send("success");
+    if (!req.body) { return res.send("No data recieved"); }
+    for (var contact in req.body) {
+        contacts[contact] = req.body[contact];
+    }
+    res.send("success");
 });
 
 

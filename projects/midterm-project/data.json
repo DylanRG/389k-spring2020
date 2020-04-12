@@ -1,0 +1,17 @@
+{
+    "data": [{
+            "City": "Germantown",
+            "State": "MD",
+            "Number of Items": 5,
+            "Address": "19320 Street Rd",
+            "List of Items": ["Guitar", "Backpack", "Laptop", "Basketball", "Console"]
+        },
+        {
+            "City": "Frederick",
+            "State": "MD",
+            "Number of Items": 2,
+            "Address": "19320 Street Rd",
+            "List of Items": ["DVD Player", "Shoes"]
+        }
+    ]
+}

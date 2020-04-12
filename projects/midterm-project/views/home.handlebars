@@ -1,1 +1,44 @@
-Home
+ <button type="button" id="createNew">Add a garage sale</button> 
+  <br>
+  Filter by items:
+  <br>
+  <input id="searchbar" onkeyup="filter_sales()" type="text"
+        name="search" placeholder="Search sales.."> 
+      <br>
+  Current Garage Sales:
+  <br>
+  <p style="display:none;" id="matches">No Matches</p>
+  <ol>
+  {{#each data}}
+   <li class="garageElem"> {{#each this}}
+     {{@key}} : {{this}}, 
+    {{/each}}</li>
+  {{/each}}
+  </ol>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+  <script>
+    $('#createNew').on('click', function() {
+      location.href='http://localhost:3000/addSale';
+    });
+    function filter_sales() { 
+    let input = document.getElementById('searchbar').value 
+    input=input.toLowerCase(); 
+    let x = document.getElementsByClassName('garageElem'); 
+      let count = 0
+    for (i = 0; i < x.length; i++) {  
+      let parsed = x[i].innerHTML.toLowerCase()
+      let newparsed = parsed.substring(parsed.indexOf("list of items") + 15)
+        if (!newparsed.includes(input)) { 
+            x[i].style.display="none"; 
+            count++;
+        } 
+        else { 
+            x[i].style.display="list-item";
+            document.getElementById("matches").style.display="none";                  
+        } 
+    } 
+    if (count == x.length) {
+        document.getElementById("matches").style.display="list-item";
+    }
+} 
+  </script>

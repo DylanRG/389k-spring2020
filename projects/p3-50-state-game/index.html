@@ -5,6 +5,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>50 State Game</title>
@@ -16,7 +17,10 @@
 </head>
 
 <body>
-
+    <p id="timer"></p>
+    <br>
+    <button id="start_button">Start!</button>
+    <input type="text" id="state_input" name="state_input"><br><br>
     <!--
     1. Implement the input element.
         You'll need to answer the the following questions (and probably more):
@@ -49,7 +53,26 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
     <script src="index.js" type="text/javascript"></script>
     <script type="text/javascript">
-        console.log(abvMap);
+        var button = document.getElementById('start_button')
+        button.addEventListener('click', hideshow, false);
+
+        function hideshow() {
+            var time = 5;
+            let x = setInterval(function() {
+
+                // Get today's date and time
+                time = time - 1;
+                // Output the result in an element with id="demo"
+                document.getElementById("timer").innerHTML = time + "s"
+
+                // If the count down is over, write some text 
+                if (time < 0) {
+                    clearInterval(x);
+                    document.getElementById("timer").innerHTML = "OVER";
+                }
+            }, 1000);
+            document.getElementById('start_button').style.display = 'none';
+        }
     </script>
 </body>
 

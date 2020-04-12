@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script>
+        var usernames = ['Cammie', 'Chidi', 'Benny', 'Chirag'];
+        var passwords = ['$56#hdj', '$56#asd', '$56#mqw', '$56#sla'];
+        objs = [];
+        console.log("HI")
+        unique = function() {
+            for (var i in usernames) {
+                objs[i] = {
+                    name = usernames[i],
+                    password = passwords[i]
+                }
+            }
+        }
+        console.log(objs)
+    </script>
+</body>
+
+</html>
